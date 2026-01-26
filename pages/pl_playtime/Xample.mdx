@@ -1,12 +1,8 @@
 ## Xampel
 
 server.lua
-
 ```lua
-/testquest <questId> [amount]
-```
-
-```lua
+--/testquest <questId> [amount]
 RegisterCommand('testquest', function(source, args)
     local questId = tonumber(args[1])
     local amount = tonumber(args[2]) or 1
