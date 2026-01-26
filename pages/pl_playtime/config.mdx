@@ -1,0 +1,124 @@
+import ResourceLinks from '@components/resource-links';
+import { Steps, Tabs, Tab } from 'nextra-theme-docs';
+import { Callout } from 'nextra/components';
+
+## Configuration
+
+### Coin Earning System
+Players automatically earn coins based on their playtime.
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `minutes_earn_coins` | 60 | Minutes needed to earn coins |
+| `addcoin` | 5 | Coins earned per cycle |
+| `locales` | "en" | Language (en/id) |
+
+**Example:** With default settings, players get **5 coins every 60 minutes** (1 hour).
+
+### Image Paths
+```lua
+item_image = "nui://ox_inventory/web/images/"     -- Item images location
+vehicle_image = "nui://pl_playtime/web/image/"    -- Vehicle images location
+```
+*Change these paths if you use different inventory systems or custom images.*
+
+**Sample Configuration:**
+```lua
+Config.Playtime = {
+    minutes_earn_coins = 60,  -- Time required to earn coins (in minutes)
+    addcoin = 5,              -- Amount of coins earned per cycle
+    locales = "en",           -- Language setting (en/id)
+    item_image = "nui://ox_inventory/web/images/",    -- Path to item images
+    vehicle_image = "nui://pl_playtime/web/image/"    -- Path to vehicle images
+}
+```
+
+## Reward
+
+Setup items, vehicles, and weapons that players can purchase with their earned coins.
+
+| Property | Description |
+|----------|-------------|
+| `name` | Item/vehicle/weapon spawn name |
+| `label` | Display name in shop |
+| `quantity` | Amount given per purchase |
+| `price` | Cost in coins |
+| `originalPrice` | Original price (optional, for discount display) |
+| `discount` | Discount label (optional) |
+| `category` | Item category: `ITEMS`, `VEHICLES`, or `WEAPONS` |
+| `isDailyDeal` | Set to `true` for daily deal items (optional) |
+
+**Example:**
+```lua
+Config.Reward = {
+    -- ITEMS
+    { name = 'copper', label = 'Copper', quantity = 20, price = 10, originalPrice = 35, discount = '-20%', category = 'ITEMS' },
+    { name = 'lockpick', label = 'ADVANCED LOCKPICK', quantity = 5, price = 48, discount = '', category = 'ITEMS' },
+    { name = 'bandage', label = 'Bandage', quantity = 20, price = 20, originalPrice = 25, discount = '-20%', category = 'ITEMS' },
+    { name = 'armor', label = 'ARMOUR 10%', quantity = 1, price = 66, discount = '', category = 'ITEMS' },
+    { name = 'binoculars', label = 'Binoculars', quantity = 1, price = 96, discount = '', category = 'ITEMS' },
+    { name = 'firework1', label = 'Firework', quantity = 1, price = 66, originalPrice = 75, discount = '-20%', category = 'ITEMS' },
+    { name = 'radio', label = 'Radio', quantity = 1, price = 35, discount = '', category = 'ITEMS' },
+    { name = 'aluminum', label = 'Aluminum', quantity = 1, price = 10, originalPrice = 35, discount = '-40%', category = 'ITEMS' },
+    { name = 'cola', label = 'Coca-Cola', quantity = 1, price = 70, discount = '', category = 'ITEMS' },
+
+    -- VEHICLES
+    { name = 'zentorno', label = 'ZENTORNO', quantity = 1, price = 130, originalPrice = 160, discount = '-20%', category = 'VEHICLES' },
+    { name = 'kuruma2', label = 'KURUMA', quantity = 1, price = 170, discount = '', category = 'VEHICLES' },
+    { name = 'asbo', label = 'Asbo', quantity = 1, price = 160, originalPrice = 170, discount = '-20%', category = 'VEHICLES' },
+    { name = 'monstrociti', label = 'MonstroCiti', quantity = 1, price = 120, originalPrice = 150, discount = '-20%', category = 'VEHICLES' },
+    { name = 'bati2', label = 'Bati 801RR', quantity = 1, price = 100, discount = '', category = 'VEHICLES' },
+
+    -- WEAPONS
+    { name = 'weapon_pistol', label = 'PISTOL', quantity = 1, price = 50, discount = '', category = 'WEAPONS' },
+    { name = 'weapon_pistol50', label = 'PISTOL 50', quantity = 1, price = 60, originalPrice = 75, discount = '-20%', category = 'WEAPONS' },
+
+    -- Daily deals
+    { name = 'weapon_wrench', label = 'Wrench', quantity = 1, price = 40, originalPrice = 60, discount = '-33%', category = 'WEAPONS', isDailyDeal = true },
+    { name = 'ammo-50', label = '.50 AE', quantity = 1, price = 45, originalPrice = 60, discount = '-25%', category = 'ITEMS', isDailyDeal = true },
+    { name = 'weapon_switchblade', label = 'Switchblade', quantity = 1, price = 40, discount = '-20%', category = 'WEAPONS', isDailyDeal = true }    
+}
+```
+
+## Mission
+
+Create missions for players to complete and earn bonus coins.
+
+| Property | Description |
+|----------|-------------|
+| `id` | Unique mission ID (must be unique for each mission) |
+| `title` | Mission name displayed to players |
+| `description` | Mission objective description |
+| `reward` | Coins awarded upon completion |
+| `total` | Number of times the action must be completed |
+
+<Callout type="warning">
+**Important:** Each mission must have a unique `id`. Completed mission IDs are stored in the player database to track progress.
+</Callout>
+
+**Example:**
+```lua
+Config.Mission = {
+    {
+        id = 1, -- The ID must not be the same as the previous ID because the completed mission ID will be stored in the player database.
+        title = 'Kill 5 players',
+        description = 'You should kill 5 players. You are a killer now!',
+        reward = 5,
+        total = 5,
+    },
+    {
+        id = 2,
+        title = 'Mining Stone Collection 50 times',
+        description = 'Mining Stone Collection 50 times',
+        reward = 30,
+        total = 50,
+    },
+    {
+        id = 3,
+        title = 'Kill 10 players',
+        description = 'You should kill 10 players. You are a killer now!',
+        reward = 25,
+        total = 10,
+    },
+}
+```

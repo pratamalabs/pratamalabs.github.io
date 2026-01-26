@@ -1,74 +1,33 @@
 import ResourceLinks from '@components/resource-links';
+import { Steps, Tabs, Tab } from 'nextra-theme-docs';
+import { Callout } from 'nextra/components';
 
 # pl playtime
 
 <ResourceLinks repo="https://github.com/pratamalabs/pl_playtime" />
 
-## Command
+## Dependencies
+- [oxmysql](https://github.com/overextended/oxmysql)
+- [ox_lib](https://github.com/overextended/ox_lib)
+
+## Player Command
 - open shop: `playtime`
+
+## Admin Command
 - give coins: `givecoins [playerid/citizenid] [amount] `
-- give coins: `removecoins [playerid/citizenid] [amount] `
+- remove coins: `removecoins [playerid/citizenid] [amount] `
 - set coins: `setcoins [playerid/citizenid] [amount] `
 
-### Reward
-
-```lua
-Config.Reward = {
-    -- ITEMS
-    { name = 'copper', label = 'Copper', quantity = 20, price = 10, originalPrice = 35, discount = '-20%', category = 'ITEMS' },
-    { name = 'lockpick', label = 'ADVANCED LOCKPICK', quantity = 5, price = 48, discount = '', category = 'ITEMS' },
-    { name = 'bandage', label = 'Bandage', quantity = 20, price = 20, originalPrice = 25, discount = '-20%', category = 'ITEMS' },
-    { name = 'armor', label = 'ARMOUR 10%', quantity = 1, price = 66, discount = '', category = 'ITEMS' },
-    { name = 'binoculars', label = 'Binoculars', quantity = 1, price = 96, discount = '', category = 'ITEMS' },
-    { name = 'firework1', label = 'Firework', quantity = 1, price = 66, originalPrice = 75, discount = '-20%', category = 'ITEMS' },
-    { name = 'radio', label = 'Radio', quantity = 1, price = 35, discount = '', category = 'ITEMS' },
-    { name = 'aluminum', label = 'Aluminum', quantity = 1, price = 10, originalPrice = 35, discount = '-40%', category = 'ITEMS' },
-    { name = 'cola', label = 'Coca-Cola', quantity = 1, price = 70, discount = '', category = 'ITEMS' },
-
-    -- VEHICLES
-    { name = 'zentorno', label = 'ZENTORNO', quantity = 1, price = 130, originalPrice = 160, discount = '-20%', category = 'VEHICLES' },
-    { name = 'kuruma2', label = 'KURUMA', quantity = 1, price = 170, discount = '', category = 'VEHICLES' },
-    { name = 'asbo', label = 'Asbo', quantity = 1, price = 160, originalPrice = 170, discount = '-20%', category = 'VEHICLES' },
-    { name = 'monstrociti', label = 'MonstroCiti', quantity = 1, price = 120, originalPrice = 150, discount = '-20%', category = 'VEHICLES' },
-    { name = 'bati2', label = 'Bati 801RR', quantity = 1, price = 100, discount = '', category = 'VEHICLES' },
-
-    -- WEAPONS
-    { name = 'weapon_pistol', label = 'PISTOL', quantity = 1, price = 50, discount = '', category = 'WEAPONS' },
-    { name = 'weapon_pistol50', label = 'PISTOL 50', quantity = 1, price = 60, originalPrice = 75, discount = '-20%', category = 'WEAPONS' },
-
-    -- Daily deals
-    { name = 'weapon_wrench', label = 'Wrench', quantity = 1, price = 40, originalPrice = 60, discount = '-33%', category = 'WEAPONS', isDailyDeal = true },
-    { name = 'ammo-50', label = '.50 AE', quantity = 1, price = 45, originalPrice = 60, discount = '-25%', category = 'ITEMS', isDailyDeal = true },
-    { name = 'weapon_switchblade', label = 'Switchblade', quantity = 1, price = 40, discount = '-20%', category = 'WEAPONS', isDailyDeal = true }    
-}
+### server cfg
+`customize to your needs access admin commands`
+``` bash
+#Playtime Commands Permission for Specific Players
+add_ace identifier.license:xxxxxxxxxxxxxxxx playtimecommand allow
+add_ace identifier.steam:110000xxxxxxxxxx playtimecommand allow
 ```
-
-### Mission
-
-```lua
-Config.Mission = {
-    {
-        id = 1, -- The ID must not be the same as the previous ID because the completed mission ID will be stored in the player database.
-        title = 'Kill 5 players',
-        description = 'You should kill 5 players. You are a killer now!',
-        reward = 5,
-        total = 5,
-    },
-    {
-        id = 2,
-        title = 'Mining Stone Collection 50 times',
-        description = 'Mining Stone Collection 50 times',
-        reward = 30,
-        total = 50,
-    },
-    {
-        id = 3,
-        title = 'Kill 10 players',
-        description = 'You should kill 10 players. You are a killer now!',
-        reward = 25,
-        total = 10,
-    },
-}
+``` bash
+#Playtime Commands Permission for Admin Group
+add_ace group.admin playtimecommand allow
 ```
 
 ## Supported Frameworks

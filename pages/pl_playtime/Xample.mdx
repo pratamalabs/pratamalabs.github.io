@@ -2,14 +2,14 @@
 
 server.lua
 ```lua
---/testquest <questId> [amount]
+--/testquest <missionID> [amount]
 RegisterCommand('testquest', function(source, args)
-    local questId = tonumber(args[1])
+    local missionID = tonumber(args[1])
     local amount = tonumber(args[2]) or 1
     
-    if not questId then return end
+    if not missionID then return end
     
-    exports['pl_playtime']:UpdateQuestProgress(source, questId, amount)
+    exports['pl_playtime']:UpdateMissionProgress(source, missionID, amount)
     
 end, false)
 ```
