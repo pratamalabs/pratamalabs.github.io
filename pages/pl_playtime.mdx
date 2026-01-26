@@ -1,22 +1,16 @@
 import ResourceLinks from '@components/resource-links';
-import { Steps, Tabs, Tab } from 'nextra-theme-docs';
-import { Callout } from 'nextra/components';
 
 # pl playtime
 
 <ResourceLinks repo="https://github.com/pratamalabs/pl_playtime" />
 
-A performant and flexible standalone targeting resource or "third-eye", with additional functionality for ox_inventory, ox_core, qbx_core, and es_extended.
+## Command
+- open shop: `playtime`
+- give coins: `givecoins [playerid/citizenid] [amount] `
+- give coins: `removecoins [playerid/citizenid] [amount] `
+- set coins: `setcoins [playerid/citizenid] [amount] `
 
-## Installation
-
-<Callout type="info">
-
-We **strongly** recommend referring to [Guides](../guides) for setting up Git, Node.js, and pnpm.
-
-</Callout>
-
-### Config.Reward
+### Reward
 
 ```lua
     -- ITEMS
@@ -47,7 +41,7 @@ We **strongly** recommend referring to [Guides](../guides) for setting up Git, N
     { name = 'weapon_switchblade', label = 'Switchblade', quantity = 1, price = 40, discount = '-20%', category = 'WEAPONS', isDailyDeal = true }    
 ```
 
-### Config.Mission
+### Mission
 
 ```lua
     -- The ID must not be the same as the previous ID because the completed mission ID will be stored in the player database.
