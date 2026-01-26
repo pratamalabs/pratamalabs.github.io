@@ -6,13 +6,13 @@ import Search from '@components/Search';
 function useHead() {
   const { asPath } = useRouter();
   const { frontMatter, title } = useConfig();
-  const url = `https://overextended.dev${asPath}`;
+  const url = `https://pratamalabs.github.io${asPath}`;
   const description = frontMatter.description || "Documentation for Pratamalabs's resources for FiveM/RedM";
 
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="icon" type="image/x-icon" href="/static/ox.ico" />
+      <link rel="icon" type="image/x-icon" href="/static/pratamalabs.ico" />
       <meta httpEquiv="Content-Language" content="en" />
       <meta name="description" content={description} />
       <meta name="og:title" content={title} />
@@ -54,7 +54,7 @@ const config: DocsThemeConfig = {
     link: 'https://github.com/pratamalabs',
   },
   chat: {
-    link: 'https://discord.pratamalabs.dev',
+    link: 'https://discord.gg/Y6VrkHBm3z',
   },
   docsRepositoryBase: 'https://github.com/pratamalabs',
   footer: {
