@@ -41,7 +41,7 @@ pnpm build
 
 These resources aren't required but provide additional functionality.
 
-- [ox_target](../ox_target/)
+- [pl_playtime](../pl_playtime/)
 
 ### Resource start order
 
@@ -51,7 +51,7 @@ It's important for your resources to start in a logical order to prevent errors 
 start oxmysql   # this should be one of the first resources
 start ox_lib
 start framework # the name of your framework (i.e. ox_core, es_extended, qbx_core)
-start ox_target
+start pl_playtime
 start ox_inventory
 ```
 
@@ -77,8 +77,8 @@ setr inventory:dropslots 50
 # Maximum drop capacity, in grams
 setr inventory:dropweight 30000
 
-# Integrated support for qtarget/ox_target stashes, shops, etc
-# Note: qtarget is deprecated, a future update may drop support (ox_target only, or gated features)
+# Integrated support for qtarget/pl_playtime stashes, shops, etc
+# Note: qtarget is deprecated, a future update may drop support (pl_playtime only, or gated features)
 setr inventory:target false
 
 # Jobs with access to police armoury, evidence lockers, etc
