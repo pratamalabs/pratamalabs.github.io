@@ -13,6 +13,7 @@ import ResourceLinks from '@components/resource-links';
 ### Reward
 
 ```lua
+Config.Reward = {
     -- ITEMS
     { name = 'copper', label = 'Copper', quantity = 20, price = 10, originalPrice = 35, discount = '-20%', category = 'ITEMS' },
     { name = 'lockpick', label = 'ADVANCED LOCKPICK', quantity = 5, price = 48, discount = '', category = 'ITEMS' },
@@ -39,14 +40,15 @@ import ResourceLinks from '@components/resource-links';
     { name = 'weapon_wrench', label = 'Wrench', quantity = 1, price = 40, originalPrice = 60, discount = '-33%', category = 'WEAPONS', isDailyDeal = true },
     { name = 'ammo-50', label = '.50 AE', quantity = 1, price = 45, originalPrice = 60, discount = '-25%', category = 'ITEMS', isDailyDeal = true },
     { name = 'weapon_switchblade', label = 'Switchblade', quantity = 1, price = 40, discount = '-20%', category = 'WEAPONS', isDailyDeal = true }    
+}
 ```
 
 ### Mission
 
 ```lua
-    -- The ID must not be the same as the previous ID because the completed mission ID will be stored in the player database.
+Config.Mission = {
     {
-        id = 1,
+        id = 1, -- The ID must not be the same as the previous ID because the completed mission ID will be stored in the player database.
         title = 'Kill 5 players',
         description = 'You should kill 5 players. You are a killer now!',
         reward = 5,
@@ -66,6 +68,7 @@ import ResourceLinks from '@components/resource-links';
         reward = 25,
         total = 10,
     },
+}
 ```
 
 ## Supported Frameworks
