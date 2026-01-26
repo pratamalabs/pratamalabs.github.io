@@ -8,7 +8,7 @@ function useHead() {
   const { frontMatter, title } = useConfig();
   const url = `https://pratamalabs.github.io${asPath}`;
   const description = frontMatter.description || "Documentation for Pratamalabs's resources for FiveM/RedM";
-
+  
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,7 @@ function useNextSeoProps() {
   const category = (arr[1][0] !== '#' && arr[1]) || 'Pratamalabs';
   const rawTitle = arr[arr.length - 1];
   const title = /[a-z]/.test(rawTitle) && /[A-Z]/.test(rawTitle) ? rawTitle : '%s';
-
+  
   return {
     titleTemplate: `${title} - ${
       rawTitle === category ? 'Documentation' : category.replace(/(^\w|\s\w)/g, (m) => m.toUpperCase())
@@ -71,8 +71,13 @@ const config: DocsThemeConfig = {
   toc: {
     backToTop: true,
   },
-
   useNextSeoProps: useNextSeoProps,
+  feedback: {
+    content: null,
+  },
+  editLink: {
+    component: null,
+  },
 };
 
 export default config;
