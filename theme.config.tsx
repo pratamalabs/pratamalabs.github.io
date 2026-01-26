@@ -6,8 +6,8 @@ import Search from '@components/Search';
 function useHead() {
   const { asPath } = useRouter();
   const { frontMatter, title } = useConfig();
-  const url = `https://pratamalabs.github.io${asPath}`;
-  const description = frontMatter.description || "Dokumentasi Pratama Labs";
+  const url = `https://overextended.dev${asPath}`;
+  const description = frontMatter.description || "Documentation for Overextended's resources for FiveM/RedM";
 
   return (
     <>
@@ -25,7 +25,7 @@ function useHead() {
 function useNextSeoProps() {
   const { asPath } = useRouter();
   const arr = asPath.replace(/[-_]/g, ' ').split('/');
-  const category = (arr[1][0] !== '#' && arr[1]) || 'Pratama Labs';
+  const category = (arr[1][0] !== '#' && arr[1]) || 'Overextended';
   const rawTitle = arr[arr.length - 1];
   const title = /[a-z]/.test(rawTitle) && /[A-Z]/.test(rawTitle) ? rawTitle : '%s';
 
@@ -38,16 +38,27 @@ function useNextSeoProps() {
 
 const config: DocsThemeConfig = {
   logo: (
-    <div style={{ fontWeight: 550, fontSize: '18px' }}>
-      🚀 Pratama Labs
+    <div
+      style={{
+        paddingLeft: '50px',
+        lineHeight: '38px',
+        background: "url('https://avatars.githubusercontent.com/u/88127058?s=38') no-repeat left",
+        backgroundSize: '38px',
+        fontWeight: 550,
+      }}
+    >
+      Overextended
     </div>
   ),
   project: {
-    link: 'https://github.com/pratamalabs/pratamalabs.github.io',
+    link: 'https://github.com/overextended/overextended.github.io',
   },
-  docsRepositoryBase: 'https://github.com/pratamalabs/pratamalabs.github.io/blob/main',
+  chat: {
+    link: 'https://discord.overextended.dev',
+  },
+  docsRepositoryBase: 'https://github.com/overextended/overextended.github.io/blob/main',
   footer: {
-    text: 'Pratama Labs © 2026',
+    text: 'Overextended',
   },
   search: {
     component: <Search />,
@@ -60,6 +71,7 @@ const config: DocsThemeConfig = {
   toc: {
     backToTop: true,
   },
+
   useNextSeoProps: useNextSeoProps,
 };
 
