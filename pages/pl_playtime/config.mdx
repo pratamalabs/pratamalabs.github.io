@@ -41,6 +41,7 @@ Setup items, vehicles, and weapons that players can purchase with their earned c
 |----------|-------------|
 | `name` | Item/vehicle/weapon spawn name |
 | `label` | Display name in shop |
+| `description` | (optional, Display description in shop) |
 | `quantity` | Amount given per purchase |
 | `price` | Cost in coins |
 | `originalPrice` | Original price (optional, for discount display) |
@@ -52,15 +53,15 @@ Setup items, vehicles, and weapons that players can purchase with their earned c
 ```lua
 Config.Reward = {
     -- ITEMS
-    { name = 'copper', label = 'Copper', quantity = 20, price = 10, originalPrice = 35, discount = '-20%', category = 'ITEMS' },
+    { name = 'parachute', label = 'Parachute', quantity = 20, price = 10, originalPrice = 35, discount = '-20%', category = 'ITEMS' },
     { name = 'lockpick', label = 'ADVANCED LOCKPICK', quantity = 5, price = 48, discount = '', category = 'ITEMS' },
     { name = 'bandage', label = 'Bandage', quantity = 20, price = 20, originalPrice = 25, discount = '-20%', category = 'ITEMS' },
-    { name = 'armor', label = 'ARMOUR 10%', quantity = 1, price = 66, discount = '', category = 'ITEMS' },
-    { name = 'binoculars', label = 'Binoculars', quantity = 1, price = 96, discount = '', category = 'ITEMS' },
-    { name = 'firework1', label = 'Firework', quantity = 1, price = 66, originalPrice = 75, discount = '-20%', category = 'ITEMS' },
+    { name = 'armour', label = 'Bulletproof Vest', quantity = 1, price = 66, discount = '', category = 'ITEMS' },
+    { name = 'money', label = 'Money', quantity = 1, price = 96, discount = '', category = 'ITEMS' },
+    { name = 'water', label = 'Water', quantity = 1, price = 66, originalPrice = 75, discount = '-20%', category = 'ITEMS' },
     { name = 'radio', label = 'Radio', quantity = 1, price = 35, discount = '', category = 'ITEMS' },
-    { name = 'aluminum', label = 'Aluminum', quantity = 1, price = 10, originalPrice = 35, discount = '-40%', category = 'ITEMS' },
-    { name = 'cola', label = 'Coca-Cola', quantity = 1, price = 70, discount = '', category = 'ITEMS' },
+    { name = 'paperbag', label = 'Paper Bag', quantity = 1, price = 10, originalPrice = 35, discount = '-40%', category = 'ITEMS' },
+    { name = 'sprunk', label = 'Sprunk', quantity = 1, price = 70, discount = '', category = 'ITEMS' },
 
     -- VEHICLES
     { name = 'zentorno', label = 'ZENTORNO', quantity = 1, price = 130, originalPrice = 160, discount = '-20%', category = 'VEHICLES' },
@@ -76,7 +77,7 @@ Config.Reward = {
     -- Daily deals
     { name = 'weapon_wrench', label = 'Wrench', quantity = 1, price = 40, originalPrice = 60, discount = '-33%', category = 'WEAPONS', isDailyDeal = true },
     { name = 'ammo-50', label = '.50 AE', quantity = 1, price = 45, originalPrice = 60, discount = '-25%', category = 'ITEMS', isDailyDeal = true },
-    { name = 'weapon_switchblade', label = 'Switchblade', quantity = 1, price = 40, discount = '-20%', category = 'WEAPONS', isDailyDeal = true }    
+    { name = 'weapon_switchblade', label = 'Switchblade', quantity = 1, price = 40, discount = '-20%', category = 'WEAPONS', isDailyDeal = true }
 }
 ```
 
