@@ -1,0 +1,67 @@
+import ResourceLinks from '@components/resource-links';
+import { Steps, Tabs, Tab } from 'nextra-theme-docs';
+import { Callout } from 'nextra/components';
+
+## Configuration
+
+### Service
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `jobName` | "police" | job name |
+| `label` | "LSPD" | Display name of the service in the app |
+| `description` | "Los Santos Police" | Short description of the service |
+| `icon` | "./Images/Jobs/police.png" | Service icon (supports local image path, emoji, or URL `http/https`) |
+| `color` | "#3478F6" | Main color of the service (HEX format) |
+| `EnableBellDuty` | true | Allow players to go on or off duty using the mobile phone |
+| `OnlyOnDutyReceiveMessages` | true | Only players currently on duty will receive service messages. |
+
+**Sample Configuration:**
+```lua
+Config.Service = {
+    { 
+        jobName = "police",
+        label = "LSPD",        
+        description = "Los Santos Police",  
+        icon = "./Images/Jobs/police.png",
+        color = "#3478F6", 
+        EnableBellDuty = true, 
+        OnlyOnDutyReceiveMessages = true 
+    },
+    { 
+        jobName = "ambulance",
+        label = "EMS",         
+        description = "Emergency medical services",  
+        icon = "🚑", color = "#30D158", 
+        EnableBellDuty = true, 
+        OnlyOnDutyReceiveMessages = false 
+    },
+    { 
+        jobName = "mechanic", 
+        label = "Mechanic",    
+        description = "Official city workshop",     
+        icon = "🔧", 
+        color = "#FF9F0A", 
+        EnableBellDuty = true, 
+        OnlyOnDutyReceiveMessages = false 
+    },
+    { 
+        jobName = "taxi",     
+        label = "Taxi",        
+        description = "City public transport", 
+        icon = "🚖", color = "#FFD60A",
+        EnableBellDuty = true, 
+        OnlyOnDutyReceiveMessages = true 
+    },
+    { 
+        jobName = "gov",     
+        label = "Government",  
+        description = "City government",      
+        icon = "🏛️", 
+        color = "#BF5AF2", 
+        EnableBellDuty = true, 
+        OnlyOnDutyReceiveMessages = true 
+    },
+}
+
+```
