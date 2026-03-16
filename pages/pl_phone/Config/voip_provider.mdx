@@ -1,0 +1,106 @@
+# VOIP Configuration
+
+FivePhone supports three VOIP providers: **pma-voice**, **SaltyChat**, and **Mumble**.
+Change the provider by setting `Config.VoipProvider` in `config.lua`.
+```lua
+Config.VoipProvider = "pma-voice" -- "pma-voice" | "saltychat" | "mumble"
+```
+
+---
+
+## Providers
+
+### pma-voice (Default)
+
+No additional configuration needed. FivePhone will automatically create a
+call channel based on the `threadKey` of the call.
+```lua
+Config.PmaVoice = {
+    ChannelName    = "FiveChat_Call_%s",
+    UseCallChannel = true,
+}
+```
+
+| Setting | Default | Type | Description |
+|---------|---------|------|-------------|
+| `ChannelName` | `"FiveChat_Call_%s"` | String | Channel name format, `%s` replaced with call `threadKey` |
+| `UseCallChannel` | `true` | Boolean | Use a dedicated call channel for each call |
+
+---
+
+### SaltyChat
+```lua
+Config.VoipProvider = "saltychat"
+
+Config.SaltyChat = {
+    ChannelName      = "FiveChat_Call_%s",
+    DefaultChannel   = "",
+    DisableProximity = true,
+}
+```
+
+| Setting | Default | Type | Description |
+|---------|---------|------|-------------|
+| `ChannelName` | `"FiveChat_Call_%s"` | String | Channel name format, `%s` replaced with call `threadKey` |
+| `DefaultChannel` | `""` | String | Channel to return to after call ends, empty = proximity mode |
+| `DisableProximity` | `true` | Boolean | Disable proximity voice during an active call |
+
+> **Note** — Make sure `saltychat` resource is started before FivePhone in `server.cfg`.
+
+---
+
+### Mumble
+```lua
+Config.VoipProvider = "mumble"
+
+Config.Mumble = {
+    DisableProximity  = true,
+    ProximityDistance = 3.0,
+    DefaultChannel    = "",
+}
+```
+
+| Setting | Default | Type | Description |
+|---------|---------|------|-------------|
+| `DisableProximity` | `true` | Boolean | Disable proximity voice during an active call |
+| `ProximityDistance` | `3.0` | Number | Proximity distance restored after call ends (meters) |
+| `DefaultChannel` | `""` | String | Channel to return to after call ends, empty = proximity mode |
+
+---
+
+## How It Works
+```
+Player A calls Player B
+        ↓
+Server creates threadKey  →  "08XXXXX||08YYYYY"
+        ↓
+Both players receive voipJoin event
+        ↓
+Client Voice.lua joins the call channel
+        ↓
+Call ends / player disconnects
+        ↓
+Client Voice.lua leaves channel & restores proximity
+```
+
+---
+
+## Ring Timeout
+```lua
+Config.RingTimeout = 30 -- seconds before call is marked as missed
+```
+
+If the receiver does not answer within `RingTimeout` seconds,
+both players will receive a missed call event and the call will be removed automatically.
+
+---
+
+## Switching Providers
+
+| Provider | Resource Required | Config Section |
+|----------|-------------------|----------------|
+| `pma-voice` | `pma-voice` | `Config.PmaVoice` |
+| `saltychat` | `saltychat` | `Config.SaltyChat` |
+| `mumble` | built-in FiveM | `Config.Mumble` |
+
+Only **one** provider is active at a time based on `Config.VoipProvider`.

@@ -1,0 +1,31 @@
+# Garage Configuration
+```lua
+Config.Garage = {
+    Garage = {
+        Price                      = 5000,
+        AllowGarageRetrieveFromApp = true,
+    },
+    Impound = {
+        Price                       = 50000,
+        AllowImpoundRetrieveFromApp = true,
+    }
+}
+```
+
+---
+
+## Garage
+
+| Setting | Default | Type | Description |
+|---------|---------|------|-------------|
+| `Price` | `5000` | Number | Fee charged when retrieving a vehicle from the garage |
+| `AllowGarageRetrieveFromApp` | `true` | Boolean | Allow players to retrieve their vehicle directly from the app. Vehicle will spawn near the player and the fee will be charged automatically |
+
+---
+
+## Impound
+
+| Setting | Default | Type | Description |
+|---------|---------|------|-------------|
+| `Price` | `50000` | Number | Fee charged when retrieving a vehicle from the impound |
+| `AllowImpoundRetrieveFromApp` | `true` | Boolean | Allow players to retrieve their vehicle directly from the app. Vehicle will spawn near the player and the fee will be charged automatically |

@@ -1,0 +1,11 @@
+## Send an emergency message to the job ambulance
+```lua
+TriggerServerEvent("phone:server:sendSignalAmbulance", caption)
+```
+
+xample
+```lua
+RegisterCommand("help", function()
+    TriggerServerEvent("phone:server:sendSignalAmbulance", "please i need emergency help")
+end)
+```
