@@ -4,12 +4,27 @@ import { Callout } from 'nextra/components';
 
 # coming soon
 
-<ResourceLinks repo="https://github.com/pratamalabs/pl_phone" />
+## API key
 
-## Dependencies
-- [oxmysql](https://github.com/overextended/oxmysql)
-- [ox_lib](https://github.com/overextended/ox_lib)
-- [ox_inventory](https://github.com/overextended/ox_inventory)
+edit in ```pl_phone/web/Config/API.json```
+
+``` json
+{
+  "api": {
+    "youtube_keys": ["KEY1", "KEY2", "KEY3"],
+    "music_keys": ["KEY1", "KEY2", "KEY3"],
+    "fivemanage": "YOUR_KEYS"
+  }
+}
+```
+- [get fivemanage api key](https://fivemanage.com/)
+- [get youtube api key](https://console.cloud.google.com/apis/credentials)
+
+| Setting | type | Description |
+|---------|---------|-------------|
+| `youtube_keys` | string array | Alternatively, to overcome search limitations, use your own apikey. |
+| `addcoin` | 5 | Coins earned per cycle |
+| `fivemanage` | string | must be filled in, this works for fivechat & fivetok |
 
 ## Supported Frameworks
 
